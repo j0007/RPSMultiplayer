@@ -9,10 +9,6 @@
   };
   firebase.initializeApp(config);
  
- 
- 
-
-  
  // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
     var computerChoices = ["r", "p", "s"];
 
@@ -32,8 +28,15 @@
     // This function is run whenever the user presses a key.
     document.onkeyup = function(event) {
 
+      var database = firebase.database();
+
       // Determines which key was pressed.
       var userGuess = event.key;
+
+      database.ref().set({
+        userOneInput: userGuess
+      });
+
 
       // Randomly chooses a choice from the options array. This is the Computer's guess.
       var userTwoGuess = "";

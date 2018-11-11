@@ -13,13 +13,27 @@
 <body>
 
   <div>
-    <p id="directions-text">PVP ROCK PAPER SCISSORS!</p>
-    <p id="userchoice-text"></p>
-    <p id="opponentchoice-text"></p>
-    <p id="wins-text"></p>
-    <p id="losses-text"></p>
-    <p id="ties-text"></p>
-  </div>
+    <h1 class="text-center display-3">PVP ROCK PAPER SCISSORS!</h1>
+    <h2 class ="text-center" id="directions-text"> Enter Name & PRESS R,P,S to start!</h2>
+    
+    <form>
+        <div class="form-group display-inline">
+                <label for="InputEmail1">UserName</label>
+                <input type="name" class="form-control" id="userName" placeholder="Enter name">
+            </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        
+        </div>
+
+    <div class="text-center mx-auto">
+            <p id="userchoice-text"></p>
+            <p id="opponentchoice-text"></p>
+            <p id="wins-text"></p>
+            <p id="losses-text"></p>
+            <p id="ties-text"></p>
+        </div>
+
 
   <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

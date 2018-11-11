@@ -17,28 +17,26 @@
     var losses = 0;
     var ties = 0;
 
-    // Create variables that hold references to the places in the HTML where we want to display things.
-    var directionsText = $("#directions-text");
-    var userChoiceText = $("#userchoice-text");
-    var opponentChoiceText = $("#opponentchoice-text");
-    var winsText = $("#wins-text");
-    var lossesText = $("#losses-text");
-    var tiesText = $("#ties-text");
-
     // This function is run whenever the user presses a key.
     document.onkeyup = function(event) {
 
       var database = firebase.database();
-
-      // Determines which key was pressed.
       var userGuess = event.key;
 
       database.ref().set({
         userOneInput: userGuess
       });
 
+    database.ref().on("value", function(snapshot) {
 
-      // Randomly chooses a choice from the options array. This is the Computer's guess.
+      
+        userGuess = snapshot.val().userOneInput;
+    });
+  
+
+console.log(userGuess);
+
+      // 
       var userTwoGuess = "";
 
       // Reworked our code from last step to use "else if" instead of lots of if statements.
@@ -63,13 +61,13 @@
         }
 
         // Hide the directions
-        directionsText.textContent = "";
+        $("#directions-text").text("");
 
         // Display the user and computer guesses, and wins/losses/ties.
-        userChoiceText.textContent = "You chose: " + userGuess;
-        opponentChoiceText.textContent = "Your Opponent chose: " + userTwoGuess;
-        winsText.textContent = "wins: " + wins;
-        lossesText.textContent = "losses: " + losses;
-        tiesText.textContent = "ties: " + ties;
+        $("#userchoice-text").text("You chose: " + userGuess);
+        $("#opponentchoice-text").text("Your Opponent chose: " + userTwoGuess);
+        $("#wins-text").text("wins: " + wins);
+        $("#losses-text").text("losses: " + losses);
+        $("#ties-text").text("ties: " + ties);
       }
     };
